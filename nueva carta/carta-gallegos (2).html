@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallegos — Fuente · Beer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17140f;
+    --paper:#f4edda;
+    --paper-2:#fbf6ea;
+    --brass:#b8863b;
+    --brass-dim:#8f6a2e;
+    --brick:#7a2a1d;
+    --line:rgba(23,20,15,0.16);
+    --line-strong:rgba(23,20,15,0.32);
+    --maxw:640px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Lora', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    background:var(--ink);
+    color:var(--paper);
+    padding:2.6rem 1.25rem 1.6rem;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:6px;
+    background:repeating-linear-gradient(90deg, var(--brass) 0 14px, transparent 14px 22px);
+    opacity:0.9;
+  }
+  .brand{
+    display:flex;
+    align-items:stretch;
+    justify-content:center;
+    gap:0.55rem;
+    margin:0 auto 0.9rem;
+  }
+  .brand-stack{
+    font-family:'Anton', sans-serif;
+    line-height:0.82;
+    font-size:clamp(2.6rem, 13vw, 3.4rem);
+    letter-spacing:0.01em;
+    text-transform:uppercase;
+  }
+  .brand-side{
+    writing-mode:vertical-rl;
+    text-orientation:mixed;
+    font-family:'Space Mono', monospace;
+    font-size:0.62rem;
+    letter-spacing:0.32em;
+    color:var(--brass);
+    align-self:stretch;
+    display:flex;
+    align-items:center;
+    padding:0 0.15rem;
+    border-left:1px solid var(--brass-dim);
+    border-right:1px solid var(--brass-dim);
+  }
+  .badge{
+    display:inline-block;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.22em;
+    color:var(--ink);
+    background:var(--brass);
+    padding:0.28rem 0.85rem;
+    border-radius:999px;
+    margin-bottom:1rem;
+  }
+  .tagline{
+    font-style:italic;
+    font-size:0.95rem;
+    color:var(--paper-2);
+    opacity:0.85;
+    margin:0 0 1.1rem;
+  }
+  .hours-strip{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:0.4rem 1.1rem;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.03em;
+    color:var(--paper-2);
+    opacity:0.8;
+  }
+
+  /* ---------- STICKY NAV ---------- */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:var(--paper-2);
+    border-bottom:1px solid var(--line-strong);
+    overflow-x:auto;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  nav::-webkit-scrollbar{display:none;}
+  nav .nav-inner{
+    display:inline-flex;
+    gap:0.35rem;
+    padding:0.6rem 0.75rem;
+  }
+  nav a{
+    text-decoration:none;
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink);
+    padding:0.42rem 0.75rem;
+    border:1px solid var(--line-strong);
+    border-radius:999px;
+    flex:0 0 auto;
+  }
+  nav a:hover, nav a:focus-visible{
+    background:var(--brick);
+    border-color:var(--brick);
+    color:var(--paper);
+  }
+  nav a:focus-visible{ outline:2px solid var(--brass); outline-offset:2px; }
+
+  /* ---------- MAIN ---------- */
+  main{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:1.6rem 1.15rem 3rem;
+  }
+
+  section{
+    scroll-margin-top:3.2rem;
+    padding:1.9rem 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:0.6rem;
+    margin-bottom:1.1rem;
+  }
+  .section-head .num{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    color:var(--brass-dim);
+    letter-spacing:0.05em;
+  }
+  .section-head h2{
+    font-family:'Anton', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    font-size:1.35rem;
+    margin:0;
+    color:var(--brick);
+  }
+  .section-note{
+    font-style:italic;
+    font-size:0.85rem;
+    opacity:0.75;
+    margin:-0.5rem 0 1rem;
+  }
+
+  .item{
+    display:flex;
+    align-items:baseline;
+    gap:0.5rem;
+    padding:0.55rem 0;
+  }
+  .item + .item{ border-top:1px dashed var(--line); }
+  .item-name{
+    font-weight:600;
+    font-size:0.98rem;
+  }
+  .item-desc{
+    display:block;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.02em;
+    color:var(--brass-dim);
+    margin-top:0.15rem;
+    font-style:normal;
+  }
+  .leader{
+    flex:1;
+    border-bottom:1px dotted var(--line-strong);
+    transform:translateY(-0.3em);
+    min-width:0.6rem;
+  }
+  .price{
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:0.92rem;
+    white-space:nowrap;
+  }
+
+  .combo-box{
+    background:var(--paper-2);
+    border:1px solid var(--line-strong);
+    border-radius:12px;
+    padding:0.2rem 1.15rem;
+  }
+  .combo-group{ padding:1rem 0; }
+  .combo-group + .combo-group{ border-top:1px solid var(--line-strong); }
+  .combo-group h3{
+    font-family:'Space Mono', monospace;
+    font-size:0.95rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--brick);
+    margin:0 0 0.4rem;
+  }
+
+  .highlight{
+    background:var(--paper-2);
+    border:1px solid var(--line-strong);
+    border-radius:10px;
+    padding:1.1rem 1.15rem;
+  }
+  .highlight .item{padding:0.35rem 0;}
+
+  /* Build-your-own sandwich card */
+  .build-card{
+    background:var(--paper-2);
+    border:1px solid var(--line-strong);
+    border-radius:12px;
+    padding:1.2rem 1.2rem 1.35rem;
+  }
+  .build-base{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:1rem;
+    padding-bottom:0.85rem;
+    border-bottom:1px solid var(--line-strong);
+  }
+  .build-base .label{
+    font-family:'Space Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--brass-dim);
+    display:block;
+    margin-bottom:0.15rem;
+  }
+  .build-base .price{ font-size:1.15rem; color:var(--brick);}
+  .build-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1rem 1.4rem;
+  }
+  .build-group h3{
+    font-family:'Space Mono', monospace;
+    font-size:0.66rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--brass-dim);
+    margin:0 0 0.4rem;
+  }
+  .build-group ul{
+    list-style:none;
+    margin:0; padding:0;
+    font-size:0.87rem;
+  }
+  .build-group li{ padding:0.18rem 0; }
+  .extras-note{
+    margin-top:1.1rem;
+    padding-top:0.85rem;
+    border-top:1px dashed var(--line);
+    font-size:0.85rem;
+  }
+  .extras-note .price{ color:var(--brick); }
+
+  .chip-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.5rem;
+    margin-top:0.9rem;
+  }
+  .chip{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    background:var(--paper);
+    border:1px solid var(--line-strong);
+    border-radius:999px;
+    padding:0.3rem 0.7rem;
+  }
+
+  footer{
+    background:var(--ink);
+    color:var(--paper-2);
+    text-align:center;
+    padding:2.2rem 1.25rem 2.6rem;
+  }
+  footer .brand-stack{ font-size:1.6rem; margin-bottom:0.6rem; color:var(--brass); }
+  footer p{
+    font-size:0.82rem;
+    margin:0.25rem 0;
+    opacity:0.85;
+  }
+  footer .ig{
+    font-family:'Space Mono', monospace;
+    letter-spacing:0.05em;
+    color:var(--brass);
+  }
+
+  @media (max-width:380px){
+    .build-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-stack">GA<br>LLE<br>GOS</div>
+    <div class="brand-side">FUENTE · BEER</div>
+  </div>
+  <span class="badge">DESDE 1978</span>
+  <p class="tagline">Comida de barrio, schop helado y la misma esquina de siempre.</p>
+  <div class="hours-strip">
+    <span>LUN–MIÉ · 10:00–18:00</span>
+    <span>JUE–SÁB · 10:00–22:30</span>
+    <span>DOM · CERRADO POR AHORA</span>
+  </div>
+</header>
+
+<nav aria-label="Categorías del menú">
+  <div class="nav-inner">
+    <a href="#menu-dia">Menú del día</a>
+    <a href="#comenzar">Para comenzar</a>
+    <a href="#compartir">Para compartir</a>
+    <a href="#principales">Platos de fondo</a>
+    <a href="#sandwiches">Sándwiches</a>
+    <a href="#beber">Para beber</a>
+    <a href="#cafe">Café</a>
+    <a href="#postres">Postres</a>
+  </div>
+</nav>
+
+<main>
+
+  <section id="menu-dia">
+    <div class="section-head"><span class="num">01</span><h2>Menú del día</h2></div>
+    <p class="section-note">Lunes a viernes, 13:00–16:00 · consumo y retiro en local</p>
+    <div class="highlight">
+      <div class="item">
+        <span class="item-name">Menú del día</span>
+        <span class="leader"></span>
+        <span class="price">$8.200</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="comenzar">
+    <div class="section-head"><span class="num">02</span><h2>Para comenzar</h2></div>
+    <div class="item"><span class="item-name">Sopaipillas con pebre</span><span class="leader"></span><span class="price">$3.500</span></div>
+    <div class="item"><span class="item-name">Pichanga fría</span><span class="leader"></span><span class="price">$9.200</span></div>
+    <div class="item"><span class="item-name">Camarones al pilpil</span><span class="leader"></span><span class="price">$9.200</span></div>
+  </section>
+
+  <section id="compartir">
+    <div class="section-head"><span class="num">03</span><h2>Para compartir</h2></div>
+    <div class="item"><span class="item-name">Chorrillana</span><span class="leader"></span><span class="price">$14.900</span></div>
+    <div class="item"><span class="item-name">Papas fritas chicas</span><span class="leader"></span><span class="price">$5.000</span></div>
+    <div class="item"><span class="item-name">Papas fritas grandes</span><span class="leader"></span><span class="price">$7.900</span></div>
+    <div class="item"><span class="item-name">Ensalada</span><span class="leader"></span><span class="price">$3.500</span></div>
+  </section>
+
+  <section id="principales">
+    <div class="section-head"><span class="num">04</span><h2>Platos de fondo</h2></div>
+    <p class="section-note">Todos los platos van acompañados a elección — revisa la lista de acompañamientos abajo.</p>
+    <div class="combo-box">
+      <div class="combo-group">
+        <h3>Pescados</h3>
+        <div class="item"><span class="item-name">Salmón a la plancha</span><span class="leader"></span><span class="price">$13.500</span></div>
+        <div class="item"><span class="item-name">Reineta a la plancha</span><span class="leader"></span><span class="price">$13.500</span></div>
+        <div class="item"><span class="item-name">Atún a la plancha</span><span class="leader"></span><span class="price">$13.500</span></div>
+        <div class="item"><span class="item-name">Pescada frita</span><span class="leader"></span><span class="price">$10.000</span></div>
+      </div>
+      <div class="combo-group">
+        <h3>Carnes</h3>
+        <div class="item"><span class="item-name">Lomo vetado de vacuno</span><span class="leader"></span><span class="price">$15.000</span></div>
+        <div class="item"><span class="item-name">Chuleta de cerdo</span><span class="leader"></span><span class="price">$8.500</span></div>
+        <div class="item"><span class="item-name">Arrollado</span><span class="leader"></span><span class="price">$7.800</span></div>
+        <div class="item"><span class="item-name">Prietas</span><span class="leader"></span><span class="price">$7.800</span></div>
+      </div>
+      <div class="combo-group">
+        <h3>Pollo</h3>
+        <div class="item"><span class="item-name">A la plancha</span><span class="leader"></span><span class="price">$8.500</span></div>
+        <div class="item"><span class="item-name">Arvejado</span><span class="leader"></span><span class="price">$8.500</span></div>
+        <div class="item"><span class="item-name">Asado</span><span class="leader"></span><span class="price">$8.500</span></div>
+      </div>
+      <div class="combo-group">
+        <h3>Acompañamientos</h3>
+        <div class="item"><span class="item-name">Arroz</span><span class="leader"></span><span class="price">$1.900</span></div>
+        <div class="item"><span class="item-name">Puré</span><span class="leader"></span><span class="price">$1.900</span></div>
+        <div class="item"><span class="item-name">Chancado de papas</span><span class="leader"></span><span class="price">$1.900</span></div>
+        <div class="item"><span class="item-name">Papas mayo</span><span class="leader"></span><span class="price">$1.900</span></div>
+        <div class="item"><span class="item-name">Papas cocidas</span><span class="leader"></span><span class="price">$1.900</span></div>
+        <div class="item"><span class="item-name">Papas salteadas</span><span class="leader"></span><span class="price">$1.900</span></div>
+        <div class="item"><span class="item-name">Papas fritas</span><span class="leader"></span><span class="price">$2.900</span></div>
+        <div class="item"><span class="item-name">A lo pobre</span><span class="leader"></span><span class="price">$5.000</span></div>
+        <div class="item"><span class="item-name">Ensalada al plato</span><span class="leader"></span><span class="price">$1.900</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sandwiches">
+    <div class="section-head"><span class="num">05</span><h2>Sándwiches</h2></div>
+    <p class="section-note">Arma el tuyo: mismo precio para cualquier carne, tipo y pan.</p>
+    <div class="build-card">
+      <div class="build-base">
+        <span><span class="label">Precio base</span>Cualquier combinación</span>
+        <span class="price">$9.900</span>
+      </div>
+      <div class="build-grid">
+        <div class="build-group">
+          <h3>Carne</h3>
+          <ul>
+            <li>Lomito de cerdo</li>
+            <li>Churrasco de vacuno</li>
+            <li>Pernil</li>
+            <li>Lengua de vacuno</li>
+          </ul>
+        </div>
+        <div class="build-group">
+          <h3>Tipo</h3>
+          <ul>
+            <li>Italiano</li>
+            <li>Chacarero</li>
+            <li>Luco</li>
+            <li>Tomate, chucrut y mayo</li>
+          </ul>
+        </div>
+        <div class="build-group">
+          <h3>Pan</h3>
+          <ul>
+            <li>Ciabatta</li>
+            <li>Marraqueta</li>
+          </ul>
+        </div>
+        <div class="build-group">
+          <h3>Extras <span style="opacity:.7;">(c/u $1.000)</span></h3>
+          <ul>
+            <li>Palta · Tomate · Mayo</li>
+            <li>Chucrut · Ají verde</li>
+            <li>Queso · Cebolla</li>
+            <li>Porotos verdes</li>
+          </ul>
+        </div>
+      </div>
+      <div class="extras-note">Cada extra adicional suma <span class="price">$1.000</span> al precio base.</div>
+    </div>
+  </section>
+
+  <section id="beber">
+    <div class="section-head"><span class="num">06</span><h2>Para beber</h2></div>
+    <div class="item"><span class="item-name">Agua sin gas / con gas</span><span class="leader"></span><span class="price">$2.100</span></div>
+    <div class="item">
+      <span class="item-name">Bebidas<span class="item-desc">Coca-Cola · Coca Zero · Sprite · Sprite Lime · Fanta · Pepsi · Pepsi Zero · Bilz · Kem Piña · Crush · Canada Dry</span></span>
+      <span class="leader"></span><span class="price">$2.100</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Jugos<span class="item-desc">Piña · Durazno</span></span>
+      <span class="leader"></span><span class="price">$2.300</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Schop<span class="item-desc">Stella Artois · Trauco Ámbar</span></span>
+      <span class="leader"></span><span class="price">$4.950</span>
+    </div>
+    <div class="item"><span class="item-name">Schop 250cc</span><span class="leader"></span><span class="price">$3.000</span></div>
+    <div class="item"><span class="item-name">Chelado</span><span class="leader"></span><span class="price">$1.000</span></div>
+    <div class="item">
+      <span class="item-name">Cervezas individuales<span class="item-desc">Kunstmann Torobayo · Austral Calafate · Austral Torres del Paine · D'Olbek Maqui Ale</span></span>
+      <span class="leader"></span><span class="price">$3.500</span>
+    </div>
+    <div class="item">
+      <span class="item-name">Cervezas litro<span class="item-desc">Royal Guard Premium Lager · Heineken Original</span></span>
+      <span class="leader"></span><span class="price">$5.900</span>
+    </div>
+    <div class="item"><span class="item-name">Botellín de vino</span><span class="leader"></span><span class="price">$3.500</span></div>
+    <div class="item"><span class="item-name">Jarra de sangría</span><span class="leader"></span><span class="price">$6.500</span></div>
+  </section>
+
+  <section id="cafe">
+    <div class="section-head"><span class="num">07</span><h2>Café</h2></div>
+    <div class="item"><span class="item-name">Café</span><span class="leader"></span><span class="price">$1.800</span></div>
+    <div class="item"><span class="item-name">Té</span><span class="leader"></span><span class="price">$1.800</span></div>
+    <div class="item"><span class="item-name">Café Nespresso</span><span class="leader"></span><span class="price">$2.700</span></div>
+    <div class="item"><span class="item-name">Café con leche</span><span class="leader"></span><span class="price">$2.000</span></div>
+    <div class="item"><span class="item-name">Té con leche</span><span class="leader"></span><span class="price">$2.000</span></div>
+  </section>
+
+  <section id="postres">
+    <div class="section-head"><span class="num">08</span><h2>Postres</h2></div>
+    <p class="section-note">El postre del día es a elección según disponibilidad, todos al mismo precio.</p>
+    <div class="highlight">
+      <div class="item">
+        <span class="item-name">Postre del día</span>
+        <span class="leader"></span>
+        <span class="price">$3.500</span>
+      </div>
+      <div class="item">
+        <span class="item-name">Mote con huesillo</span>
+        <span class="leader"></span>
+        <span class="price">$3.800</span>
+      </div>
+    </div>
+    <div class="chip-row">
+      <span class="chip">Torta</span>
+      <span class="chip">Panqueques</span>
+      <span class="chip">Sopaipillas pasadas</span>
+      <span class="chip">Fruta caramelizada</span>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="brand-stack">GALLEGOS</div>
+  <p class="ig">@fuentegallegos</p>
+  <p>Av. Salvador 3021, Ñuñoa</p>
+  <p>Lun–Mié 10:00–18:00 · Jue–Sáb 10:00–22:30 · Dom cerrado por ahora</p>
+</footer>
+
+</body>
+</html>
